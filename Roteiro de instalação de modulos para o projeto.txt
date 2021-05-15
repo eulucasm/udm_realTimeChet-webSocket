@@ -1,0 +1,8 @@
+1)Criar um diretório
+2)iniciar o npm
+3)express
+4)ejs
+5)consign
+6)body-parser
+7)express-validator
+
