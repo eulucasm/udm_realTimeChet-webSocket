@@ -2,7 +2,7 @@
 var app = require('./config/server');
 
 /*parametrizar a porta de escuta */
-var server = app.listen(80, function(){
+var server = app.listen(8080, function(){
 	console.log('servidor online');
 })
 
@@ -43,7 +43,7 @@ io.on('connection', function(socket){
 				{apelido: data.apelido}
 			);
 		}
-	});
+	}); 
 });
 /* Basicamente, a função 'emit' faz um pedido parar executar alguma ação
 e o 'on' fica ouvindo os pedidos de execução*/
