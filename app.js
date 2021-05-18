@@ -19,15 +19,30 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('msgParaServidor', function(data){
+
+		/*Eventos de dialogo*/
 		socket.emit(
 			'msgParacliente',
-			{apelido : data.apelido, mensagem : data.mensagem}
+			{apelido: data.apelido, mensagem: data.mensagem}
 		);//aqui a msg enviada aparecera para quem enviou
 
 		socket.broadcast.emit(
 			'msgParacliente',
-			{apelido : data.apelido, mensagem : data.mensagem}
+			{apelido: data.apelido, mensagem: data.mensagem}
 		);//aqui a msg enviada aparecera para os demais participantes do chat
+		
+		/* Relação de participantes*/
+		if(parseInt(data.apelido_atualizado_nos_clientes) == 0){
+			socket.emit(
+				'participantesParaCliente',
+				{apelido: data.apelido}
+			);
+
+			socket.broadcast.emit(
+				'participantesParaCliente',
+				{apelido: data.apelido}
+			);
+		}
 	});
 });
 /* Basicamente, a função 'emit' faz um pedido parar executar alguma ação
